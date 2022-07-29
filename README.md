@@ -9,7 +9,7 @@ Ich besitze ein Reihenhaus mit einem kleinen Grundstück im Osten von Bremen. Da
 ## Version 0.1
 Die Version 0.1 bestand aus 4 Blumenkästen mit integriertem Wasservorratsbehälter. Die Blumenkästen enthielten geweils 3 Erdbeerpflanzen. Automatisiert war hier noch nichts. Ich musste immer mit einer Trittleiter auf die Garage klettern und die Blumenkästen von Hand bewässern.
 
-[Materialliste](vers_1/bom.md)
+[Materialliste für Version 0.1](vers_1/bom.md)
 
 ## Version 0.2 - aktuelle Version
 
