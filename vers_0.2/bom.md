@@ -8,7 +8,7 @@ für die Version 0.2
 ## Upgrade auf Version 0.2
 
 * 4x Blumenkasten Typ PARKSIDE, 80 cm, mit Wasserstandanzeige (Lidl Eigenmarke)
-* Wassertank 210 Liter
+* Wassertank Typ: Regentonne GARANTIA mit Deckel und Auslaufhahn rund 210 l grün
 * Tauchpumpe Neptun NKP-E 22 (Bauhaus Eigenmarke)
 * Shelly Plug
 * 
