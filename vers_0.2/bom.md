@@ -1,5 +1,5 @@
 # Bill of materials
-für die Version 0.1
+für die Version 0.2
 
 ## Bestand aus Version 0.1
 
