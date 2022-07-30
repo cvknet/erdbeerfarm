@@ -1,0 +1,17 @@
+# Automatisierung für Home Assistant
+alias: Erdbeerfarm gießen
+description: ''
+trigger:
+  - platform: time
+    at: '20:00:00'
+condition: []
+action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.shelly_plug1
+  - service: counter.increment
+    data: {}
+    target:
+      entity_id: counter.erdbeerfarm_gegossen
+mode: single
