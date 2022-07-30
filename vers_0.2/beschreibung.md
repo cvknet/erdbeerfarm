@@ -3,4 +3,4 @@
 ... kommt
 
 
-![Bild](erdbeerfarm_v0.2_1.jpg)
+![Bild](erdbeerfarm_v0.2_1.jpg =100x60))
