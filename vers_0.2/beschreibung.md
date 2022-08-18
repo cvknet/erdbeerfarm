@@ -6,7 +6,7 @@ In der Garage befindet sich auf der Rückseite die Regentonne (210 Liter). Die T
 Ich habe den Anschluss auf das G1 Gewinde gekürzt und den Gardena Hahnverbinder aufgeschraubt. Angeschlossen ist daran eine normale Schlauchkupplung für einen 13mm Gartenschlauch.
 Die Schlauchführung auf das Garagendach erfolgt über eines der beiden Zwangsentlüftungslöcher (ca. 10cm) an der Garagenrückseite.
 
-Die Spannungsversorung der Tauchpumpe erfolgt über einen Shelly Plug S Zwischenstecker an das 230V Netz in der Garage. Für eine funktionierende WLAn-Verbindung ist der Shelly Plug direkt hinter dem Zwangsentlüftungsloch positioniert.
+Die Spannungsversorgung der Tauchpumpe erfolgt über einen Shelly Plug S Zwischenstecker vom 230V Netz in der Garage. Für eine funktionierende WLAn-Verbindung ist der Shelly Plug direkt hinter dem Zwangsentlüftungsloch positioniert.
 
 ## Garagendach
 
