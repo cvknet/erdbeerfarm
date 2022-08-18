@@ -15,5 +15,9 @@ Das kleine 46mm Verlegerohr ist am BLumenkasten einfach durch eine kleine Bohrun
 
 Skizze folgt......
 
+## Steuerung / Software
+Die Ansteuerung des Shelly Zwischensteckers mache ich mit Home Assistant. Der Shelly Plug S wird über die Entity "switch.shelly_plug1" angesprochen. Auf der Weboberfläche kann der Gießvorgang manuell augelöst werden, ansonsten wird morgens bzw. abends der Gießvorgang über eine Automation ausgelöst (siehe HA_automation.yaml). Die Automation setzt beim gießen die Entity "counter.erdbeerfarm_gegossen" hoch.
+Der Shelly PLug S ist im Moment so konfiguriert, dass er nach 30 Sekunden automatisch weider abschaltet. 
+
 
 
