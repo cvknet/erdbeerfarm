@@ -1,11 +1,12 @@
 # Automatisierung für Home Assistant
-alias: Erdbeerfarm gießen
-description: ''
-trigger:
+- id: '1654053051364'
+  alias: Erdbeerfarm gießen
+  description: ''
+  trigger:
   - platform: time
     at: '20:00:00'
-condition: []
-action:
+  condition: []
+  action:
   - service: switch.turn_on
     data: {}
     target:
@@ -14,4 +15,21 @@ action:
     data: {}
     target:
       entity_id: counter.erdbeerfarm_gegossen
-mode: single
+  mode: single
+- id: '1656520180621'
+  alias: Erdbeerfarm gießen morgens
+  description: ''
+  trigger:
+  - platform: time
+    at: 07:00:00
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.shelly_plug1
+  - service: counter.increment
+    data: {}
+    target:
+      entity_id: counter.erdbeerfarm_gegossen
+  mode: single
