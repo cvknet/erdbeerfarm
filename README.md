@@ -8,6 +8,9 @@ Ich besitze ein Reihenhaus im Osten von Bremen. Da das Grundstück relativ klein
 
 ## Version 0.2 - aktuelle Version
 
+Die Version 0.2 besteht aus 8 Blumenkästen. Die Bewässerung erfolgt über einen 210 Liter Tank in der Garage mit einer Tauchpumpe. Die Steuerung der Pumpe wird mit einem Shelly Plug S realisiert. 
+
+
 * [Materialliste für Version 0.2](vers_0.2/bom.md)
 * [Beschreibung](vers_0.2/beschreibung.md)
 
