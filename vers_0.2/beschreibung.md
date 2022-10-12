@@ -11,7 +11,7 @@ Die Spannungsversorgung der Tauchpumpe erfolgt über einen Shelly Plug S Zwische
 ## Garagendach
 
 Der von unten kommende Gartenschlauch geht zuerst auf ein 12mm T-Stück und wird dann relativ symmetrisch auf die 8 Blumenkästen verteilt. An das T-Stück angeschlossen ist für beide Seiten das Gardena Verlegerohr 13mm. In regelmäßigen Abständen ist das Verlegerohr von den Gardena Reduzier-T-Stück 13mm unterbrochen, sodass jeweils vier Abgänge mit dem 4,6mm Verlegerohr in die Blumenkästen gehen. Am Ende des 13mm Verlegerohr sitzt jeweils ein Verschlussstopfen.
-Das kleine 4,6mm Verlegerohr ist am BLumenkasten einfach durch eine kleine Bohrung duchr den Halter der Wasserstandsanzeige gesteckt.
+Das kleine 4,6mm Verlegerohr ist am Blumenkasten einfach durch eine kleine Bohrung duchr den Halter der Wasserstandsanzeige gesteckt.
 
 Skizze folgt......
 
