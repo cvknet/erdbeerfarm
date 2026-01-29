@@ -6,6 +6,15 @@ Hier entsteht eine Beschreibung für mein Projekt "Erdbeerfarm auf dem Garagenda
 ## Motivation
 Ich besitze ein Reihenhaus im Osten von Bremen. Da das Grundstück relativ klein ist, und ich nicht viel Platz für 'Nutzpflanzen' habe, kam mir die Idee den Platz auf dem Garagendach doch auch zu nutzen. Die Grundidee entsprang einer Bierlaune, doch inzwischen wirft die kleine Farm gute Erträge ab, und ich plane schon den Ausbau. 
 
+## Version 2025
+Diese Repo muss dringend auf Stand gebracht werden! Den aktuellen Stand gibt es hier:
+
+  * Teil 1 - https://cvknet.de/articles/2025/03/erdbeerfarm/
+  * Teil 2 - https://cvknet.de/articles/2025/03/erdbeerfarm2/
+  * Teil 3 - https://cvknet.de/articles/2025/03/dachkonstruktion/
+  * Teil 4 - https://cvknet.de/articles/2025/04/farmflows/
+  * Teil 5 - https://cvknet.de/articles/2025/05/farmha/
+
 ## Version 0.2 - aktuelle Version
 
 Die Version 0.2 besteht aus 8 Blumenkästen. Die Bewässerung erfolgt über einen 210 Liter Tank in der Garage mit einer Tauchpumpe. Die Steuerung der Pumpe wird mit einem Shelly Plug S realisiert. 
