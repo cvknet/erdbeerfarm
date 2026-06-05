@@ -27,3 +27,5 @@ Die Version 0.1 bestand aus 4 Blumenkästen mit integriertem Wasservorratsbehäl
 
 [Materialliste für Version 0.1](vers_0.1/bom.md)
 
+Test
+
