@@ -8,6 +8,6 @@ Ich besitze ein Reihenhaus im Osten von Bremen. Da das Grundstück relativ klein
 
 In der Datei [online.md](/online.md) findet man eine Übersicht aller zur Erbeerfam gehörenden Artikel.
 
-## Achiv
+## Archiv
 
 Im Archiv bewahre ich [alte Sachen auf](/archiv/archiv.md) die irgendwann gelöscht werden.
