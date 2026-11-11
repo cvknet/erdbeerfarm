@@ -10,4 +10,4 @@ In der Datei [online.md](/online.md) findet man eine Übersicht aller zur Erbeer
 
 ## Achiv
 
-[alte sachen die irgendwann gelöscht werden](/archiv/archiv.md)
+Im Archiv bewahre ich [alte Sachen auf](/archiv/archiv.md) die irgendwann gelöscht werden.
