@@ -1,0 +1,371 @@
+[
+    {
+        "id": "a5638e4ba76a3e62",
+        "type": "tab",
+        "label": "Pumpe",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e51de6d08ea996ef",
+        "type": "rpi-gpio out",
+        "z": "a5638e4ba76a3e62",
+        "name": "GPIO 26 (pin 37)",
+        "pin": "26",
+        "set": true,
+        "level": "1",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 410,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d1a3baa504ff3bb8",
+        "type": "inject",
+        "z": "a5638e4ba76a3e62",
+        "name": "aus",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "e51de6d08ea996ef",
+                "a8112fc5b3e75b8b"
+            ]
+        ]
+    },
+    {
+        "id": "443521cb9cb07909",
+        "type": "link in",
+        "z": "a5638e4ba76a3e62",
+        "name": "pumpe",
+        "links": [
+            "3fccb93e51d0314d",
+            "4ad8024d59d0bf64",
+            "518051d13ebc8396",
+            "8b0fd46c4401068a",
+            "bf1119123f574632",
+            "d0e71896103d3d17",
+            "0482d78a608e0f7b",
+            "b250a765a6129b2c",
+            "66ab821c568ed908",
+            "97317574b7de3748",
+            "4553e954ccd7fc1e"
+        ],
+        "x": 145,
+        "y": 120,
+        "wires": [
+            [
+                "e51de6d08ea996ef",
+                "a8112fc5b3e75b8b"
+            ]
+        ]
+    },
+    {
+        "id": "2c730ac3a49105f6",
+        "type": "mqtt out",
+        "z": "a5638e4ba76a3e62",
+        "name": "",
+        "topic": "farm/pumpe/state",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "289a333c93e78993",
+        "x": 710,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a8112fc5b3e75b8b",
+        "type": "change",
+        "z": "a5638e4ba76a3e62",
+        "name": "false2on true2off",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "off",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "on",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 280,
+        "wires": [
+            [
+                "2c730ac3a49105f6",
+                "3d57377450c8bdca",
+                "394ac432c2eef07b"
+            ]
+        ]
+    },
+    {
+        "id": "cd8cf8029fcdb667",
+        "type": "function",
+        "z": "a5638e4ba76a3e62",
+        "name": "Tankinhalt Rest",
+        "func": "let tankvoll = Number(global.get(\"tankinhalt\"));\nlet wasserreihe = Number(global.get(\"wasserreihe\"));\nlet tankrest = (tankvoll - wasserreihe);\nmsg.payload = Math.round(tankrest*100)/100;\n//msg.payload = 1111;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 260,
+        "wires": [
+            [
+                "33784c3bc111ffc1",
+                "dfa766bfa42a6a13"
+            ]
+        ]
+    },
+    {
+        "id": "3d57377450c8bdca",
+        "type": "switch",
+        "z": "a5638e4ba76a3e62",
+        "name": "bei on",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 550,
+        "y": 360,
+        "wires": [
+            [
+                "cd8cf8029fcdb667",
+                "7583f456e770a618"
+            ]
+        ]
+    },
+    {
+        "id": "33784c3bc111ffc1",
+        "type": "debug",
+        "z": "a5638e4ba76a3e62",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "17d19080e7ad689b",
+        "type": "inject",
+        "z": "a5638e4ba76a3e62",
+        "name": "Testen, sendet \"on\"",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "on",
+        "payloadType": "str",
+        "x": 170,
+        "y": 380,
+        "wires": [
+            [
+                "3d57377450c8bdca"
+            ]
+        ]
+    },
+    {
+        "id": "dfa766bfa42a6a13",
+        "type": "change",
+        "z": "a5638e4ba76a3e62",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tankinhalt",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7583f456e770a618",
+        "type": "function",
+        "z": "a5638e4ba76a3e62",
+        "name": "counter plus 1",
+        "func": "let counter = Number(global.get(\"reihencounter\"));\nmsg.payload = counter + 1;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 480,
+        "wires": [
+            [
+                "c5ab1042c631b408"
+            ]
+        ]
+    },
+    {
+        "id": "c5ab1042c631b408",
+        "type": "change",
+        "z": "a5638e4ba76a3e62",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reihencounter",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "394ac432c2eef07b",
+        "type": "ui_text",
+        "z": "a5638e4ba76a3e62",
+        "group": "aa86bf21d638e412",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status Pumpe",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 740,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "289a333c93e78993",
+        "type": "mqtt-broker",
+        "name": "Jarvis",
+        "broker": "192.168.70.70",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "aa86bf21d638e412",
+        "type": "ui_group",
+        "name": "Farmstatus",
+        "tab": "2ad54c5043eb9692",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2ad54c5043eb9692",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

@@ -1,0 +1,391 @@
+[
+    {
+        "id": "26982db9fb5f0bde",
+        "type": "tab",
+        "label": "Reihe1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "883ad56e3e0f0e1a",
+        "type": "rpi-gpio out",
+        "z": "26982db9fb5f0bde",
+        "name": "GPIO 17 (pin 11)",
+        "pin": "17",
+        "set": true,
+        "level": "1",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 970,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "66ab821c568ed908",
+        "type": "link out",
+        "z": "26982db9fb5f0bde",
+        "name": "pumpe",
+        "mode": "link",
+        "links": [
+            "443521cb9cb07909"
+        ],
+        "x": 895,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ebd24ec48a1e633a",
+        "type": "change",
+        "z": "26982db9fb5f0bde",
+        "name": "delay2 giesszeit off-setzer",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "off",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "delay",
+                "pt": "msg",
+                "to": "giesszeit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 320,
+        "wires": [
+            [
+                "afcdf6dd5dce774b"
+            ]
+        ]
+    },
+    {
+        "id": "45c092d7563d7205",
+        "type": "mqtt in",
+        "z": "26982db9fb5f0bde",
+        "name": "",
+        "topic": "farm/reihe1/cmd",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c3814ec17ae81966",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "ebd24ec48a1e633a",
+                "35f5970ed1d96737",
+                "a5997d8a56b72077"
+            ]
+        ]
+    },
+    {
+        "id": "afcdf6dd5dce774b",
+        "type": "delay",
+        "z": "26982db9fb5f0bde",
+        "name": "msg delay",
+        "pauseType": "delayv",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 340,
+        "wires": [
+            [
+                "35f5970ed1d96737",
+                "a5997d8a56b72077"
+            ]
+        ]
+    },
+    {
+        "id": "35f5970ed1d96737",
+        "type": "change",
+        "z": "26982db9fb5f0bde",
+        "name": "on2false off2true",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 140,
+        "wires": [
+            [
+                "66ab821c568ed908",
+                "883ad56e3e0f0e1a",
+                "235face21b0c3a53"
+            ]
+        ]
+    },
+    {
+        "id": "0f5eca412853c280",
+        "type": "inject",
+        "z": "26982db9fb5f0bde",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "off",
+        "payloadType": "str",
+        "x": 210,
+        "y": 80,
+        "wires": [
+            [
+                "35f5970ed1d96737"
+            ]
+        ]
+    },
+    {
+        "id": "a5997d8a56b72077",
+        "type": "mqtt out",
+        "z": "26982db9fb5f0bde",
+        "name": "",
+        "topic": "farm/reihe1/state",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c3814ec17ae81966",
+        "x": 950,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "a60eda94ce060b68",
+        "type": "mqtt out",
+        "z": "26982db9fb5f0bde",
+        "name": "",
+        "topic": "farm/reihe1/cmd",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c3814ec17ae81966",
+        "x": 780,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "7f62288c2b17820c",
+        "type": "ui_button",
+        "z": "26982db9fb5f0bde",
+        "name": "",
+        "group": "a2e76e8f1f8a822d",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Reihe 1 on (Tor)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "on",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 440,
+        "y": 440,
+        "wires": [
+            [
+                "a60eda94ce060b68"
+            ]
+        ]
+    },
+    {
+        "id": "ec23687cb3165728",
+        "type": "link in",
+        "z": "26982db9fb5f0bde",
+        "name": "notaus1",
+        "links": [
+            "a72ba0b7cbd36a48"
+        ],
+        "x": 135,
+        "y": 140,
+        "wires": [
+            [
+                "35f5970ed1d96737"
+            ]
+        ]
+    },
+    {
+        "id": "f4a5909e9a744fac",
+        "type": "ui_text",
+        "z": "26982db9fb5f0bde",
+        "group": "aa86bf21d638e412",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Reihe1",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1020,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "235face21b0c3a53",
+        "type": "change",
+        "z": "26982db9fb5f0bde",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "on",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "off",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 40,
+        "wires": [
+            [
+                "f4a5909e9a744fac"
+            ]
+        ]
+    },
+    {
+        "id": "c3814ec17ae81966",
+        "type": "mqtt-broker",
+        "name": "Jarvis",
+        "broker": "192.168.70.70",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "a2e76e8f1f8a822d",
+        "type": "ui_group",
+        "name": "Bedienung",
+        "tab": "2ad54c5043eb9692",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "aa86bf21d638e412",
+        "type": "ui_group",
+        "name": "Farmstatus",
+        "tab": "2ad54c5043eb9692",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2ad54c5043eb9692",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

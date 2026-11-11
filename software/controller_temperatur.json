@@ -1,0 +1,264 @@
+[
+    {
+        "id": "8a0d7b2ad2e2b7e2",
+        "type": "tab",
+        "label": "Controller Temp",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f9c23d23.c8c24",
+        "type": "exec",
+        "z": "8a0d7b2ad2e2b7e2",
+        "command": "vcgencmd measure_temp",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Raspberry CPU Temperature",
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "a0ad4644.0efbf8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a0ad4644.0efbf8",
+        "type": "function",
+        "z": "8a0d7b2ad2e2b7e2",
+        "name": "Extract CPU Temp",
+        "func": "const re = /^temp=(.*)'C$/gm;\nmsg.payload = Number(msg.payload.replace(re, '$1'));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 690,
+        "y": 140,
+        "wires": [
+            [
+                "1e55a07fdcabc2a1",
+                "0b73d9d35b336c60"
+            ]
+        ]
+    },
+    {
+        "id": "a97d78fc.40c268",
+        "type": "inject",
+        "z": "8a0d7b2ad2e2b7e2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "f9c23d23.c8c24",
+                "3fc6bad5f8e8a556"
+            ]
+        ]
+    },
+    {
+        "id": "1e55a07fdcabc2a1",
+        "type": "ui_gauge",
+        "z": "8a0d7b2ad2e2b7e2",
+        "name": "",
+        "group": "a6786240d3ba3fba",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "CPU Temperatur",
+        "label": "C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "70",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "40",
+        "seg2": "60",
+        "diff": false,
+        "className": "",
+        "x": 950,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "0b73d9d35b336c60",
+        "type": "mqtt out",
+        "z": "8a0d7b2ad2e2b7e2",
+        "name": "",
+        "topic": "farm/cputemp",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "289a333c93e78993",
+        "x": 960,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "3fc6bad5f8e8a556",
+        "type": "exec",
+        "z": "8a0d7b2ad2e2b7e2",
+        "command": "vcgencmd measure_volts",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Raspberry CPU Volts",
+        "x": 420,
+        "y": 240,
+        "wires": [
+            [
+                "a566175db05d5ed3"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "5640a42a7509af09",
+        "type": "mqtt out",
+        "z": "8a0d7b2ad2e2b7e2",
+        "name": "",
+        "topic": "farm/cpuvolts",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "289a333c93e78993",
+        "x": 970,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "a566175db05d5ed3",
+        "type": "function",
+        "z": "8a0d7b2ad2e2b7e2",
+        "name": "Extract CPU Volts",
+        "func": "const re = /^volt=(.*)V$/gm;\nmsg.payload = Number(msg.payload.replace(re, '$1'));\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 260,
+        "wires": [
+            [
+                "5640a42a7509af09",
+                "08459429b6f74af8"
+            ]
+        ]
+    },
+    {
+        "id": "08459429b6f74af8",
+        "type": "ui_gauge",
+        "z": "8a0d7b2ad2e2b7e2",
+        "name": "",
+        "group": "a6786240d3ba3fba",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "CPU Volts",
+        "label": "V",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "3",
+        "colors": [
+            "#99c1f1",
+            "#99c1f1",
+            "#99c1f1"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 970,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "a6786240d3ba3fba",
+        "type": "ui_group",
+        "name": "Controller Daten",
+        "tab": "2ad54c5043eb9692",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "289a333c93e78993",
+        "type": "mqtt-broker",
+        "name": "myserver",
+        "broker": "192.168.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "2ad54c5043eb9692",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
